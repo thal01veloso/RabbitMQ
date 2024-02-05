@@ -22,7 +22,7 @@ class RabbitmpPublisher:
         )
         channel = pika.BlockingConnection(conections_parameters).channel()
         return channel
-    def send_message(self, body):
+    def send_message(self, body: Dict):
         self.__channel.basic_publish(
             exchange=self.__exchange,
             routing_key=self.__routing_key,
@@ -33,5 +33,4 @@ class RabbitmpPublisher:
             )
         
 rabbitmq_publisher = RabbitmpPublisher()
-rabbitmq_publisher.send_message({"Olá":"mundo"})
-    
+rabbitmq_publisher.send_message({"Message":"compartilhe esse video com mais pessoas"})
